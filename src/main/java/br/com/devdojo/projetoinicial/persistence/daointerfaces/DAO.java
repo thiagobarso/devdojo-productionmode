@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by thiago on 19/05/2024.
  */
-public interface DAO<T> implements Serializable {
+public interface DAO<T> extends Serializable {
 
     public abstract T save(T entity);
 
