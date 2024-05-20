@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static br.com.devdojo.projetoinicial.utils.StringUtils.like;
+
 @Named
 @ViewScoped
 public class TesteBean implements Serializable {
@@ -41,7 +43,7 @@ public class TesteBean implements Serializable {
         List<Projeto> projetos = dao.findHQLQuery("searchProjectByName", Collections.singletonList("teste"), 0);
         System.out.println(projetos);
 
-        List<Projeto> projetos2 = dao.findHQLQuery("searchProjectByName", Arrays.asList("teste", 4L), 0);
+        List<Projeto> projetos2 = dao.findHQLQuery("searchProjectByName", Arrays.asList(like("teste"), 4L), 0);
         System.out.println(projetos2);
     }
 }
