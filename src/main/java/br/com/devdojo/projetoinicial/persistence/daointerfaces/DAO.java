@@ -12,5 +12,5 @@ public interface DAO<T> extends Serializable {
 
     public abstract T update(T entity);
 
-    public abstract List<T> listAll(T entity);
+    public abstract List<T> listAll();
 }

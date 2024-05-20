@@ -18,12 +18,19 @@ public class AbstractEntity implements Serializable {
     public boolean equals(Object obj) {
         if (obj instanceof AbstractEntity) {
             if (obj.getClass() == this.getClass()) {
-                if (getId() != null && ((AbstractEntity) obj).getId().equals(getId())){
+                if (getId() != null && ((AbstractEntity) obj).getId().equals(getId())) {
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "id=" + id +
+                '}';
     }
 
     @Override
