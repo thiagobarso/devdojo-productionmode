@@ -8,6 +8,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Named
@@ -32,7 +34,14 @@ public class TesteBean implements Serializable {
 //
 //        System.out.println("hadouken");
 
-        List<Projeto> projetos = dao.listAll();
+//        List<Projeto> projetos = dao.listAll();
+//        System.out.println(projetos);
+
+
+        List<Projeto> projetos = dao.findHQLQuery("searchProjectByName", Collections.singletonList("teste"), 0);
         System.out.println(projetos);
+
+        List<Projeto> projetos2 = dao.findHQLQuery("searchProjectByName", Arrays.asList("teste", 4L), 0);
+        System.out.println(projetos2);
     }
 }
