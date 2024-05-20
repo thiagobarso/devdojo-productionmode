@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2e16017-3529-4bcd-9cbe-b862d54545e6" name="Default" comment="Production mode: Projeto inicial 05 - Configurando projeto JEE para produção">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -927,7 +928,7 @@
       <updated>1716147104847</updated>
       <workItem from="1716147109294" duration="3468000" />
       <workItem from="1716150660661" duration="583000" />
-      <workItem from="1716155551347" duration="9707000" />
+      <workItem from="1716155551347" duration="9817000" />
     </task>
     <task id="LOCAL-00001" summary="Production mode: Projeto inicial 03 - Configurando projeto JEE para produção">
       <created>1716161290721</created>
@@ -968,7 +969,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13758000" />
+    <option name="totallyTimeSpent" value="13868000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1293,8 +1294,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        <state relative-caret-position="85">
+          <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
         </state>
       </provider>
