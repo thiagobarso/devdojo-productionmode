@@ -9,8 +9,12 @@
 <f:view>
     <p:messages/>
     <h:form>
-        <h:outputLabel value="#{m.oi}"/>
-        <h:commandButton value="VAI MANOLO!" actionListener="#{testeBean.init()}"/>
+        <!--<h:outputLabel value="#{m.oi}"/>-->
+        <!--<h:commandButton value="VAI MANOLO!" actionListener="#{testeBean.init()}"/>-->
+        <h:selectOneMenu value="#{testeBean.projeto}" converter="entityConverter" >
+            <f:selectItems value="#{testeBean.projetos}" var="projeto" itemLabel="#{projeto.nome}" itemValue="#{projeto}" />
+        </h:selectOneMenu>
+        <h:commandButton value="salvar" actionListener="#{testeBean.construct()}"/>
     </h:form>
 </f:view>
 </html>

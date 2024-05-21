@@ -5,6 +5,7 @@ import br.com.devdojo.projetoinicial.persistence.daointerfaces.DAO;
 import br.com.devdojo.projetoinicial.persistence.model.Projeto;
 import br.com.devdojo.projetoinicial.utils.FacesUtils;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,9 +22,16 @@ public class TesteBean implements Serializable {
 
     @Inject
     private DAO<Projeto> dao;
+    private Projeto projeto;
+    private List<Projeto> projetos;
+
+    @PostConstruct
+    public void init() {
+        projetos = dao.listAll();
+    }
 
     @Transactional
-    public void init() throws Exception {
+    public void construct() throws Exception {
 //        Projeto p1 = new Projeto();
 //        p1.setNome("Projeto Teste");
 //
@@ -50,7 +58,7 @@ public class TesteBean implements Serializable {
             projeto.setNome("Projeto 1");
             projeto2.setNome("Projeto 2");
             dao.save(projeto);
-            if(true)
+            if (true)
                 throw new Exception("testando transação");
             dao.save(projeto2);
             FacesUtils.addSuccessMessage("sucesso");
@@ -60,7 +68,21 @@ public class TesteBean implements Serializable {
             FacesUtils.addErrorMessage("erro");
             throw e;
         }
+    }
 
+    public Projeto getProjeto() {
+        return projeto;
+    }
 
+    public void setProjeto(Projeto projeto) {
+        this.projeto = projeto;
+    }
+
+    public List<Projeto> getProjetos() {
+        return projetos;
+    }
+
+    public void setProjetos(List<Projeto> projetos) {
+        this.projetos = projetos;
     }
 }

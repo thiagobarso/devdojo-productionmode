@@ -6,6 +6,7 @@ import br.com.devdojo.projetoinicial.persistence.fileservice.FileXMLService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -74,5 +75,16 @@ public class DAOImpl<T> implements DAO<T> {
             query.setParameter(params.get(i), values.get(i));
         }
         return maxResults == 0 ? query.getResultList() : query.setMaxResults(maxResults).getResultList();
+    }
+
+    @Override
+    public void remove(T entity) {
+        em.remove(em.contains(entity) ? entity : em.merge(entity));
+        em.flush();
+    }
+
+    @Override
+    public T findById(Serializable id) {
+        return em.find(this.classe, id);
     }
 }
