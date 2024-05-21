@@ -54,12 +54,19 @@ public class DAOImpl<T> implements DAO<T> {
     }
 
     @Override
-    public List<T> findHQLQuery(String queryId, List<Object> values, int maxResults){
+    public List<T> findHQLQueryNoParameters(String queryId, int maxResults) {
+        String hql = hqlQuery.findValue(queryId);
+        TypedQuery<T> query = em.createQuery(hql, this.classe);
+        return maxResults == 0 ? query.getResultList() : query.setMaxResults(maxResults).getResultList();
+    }
+
+    @Override
+    public List<T> findHQLQuery(String queryId, List<Object> values, int maxResults) {
         String hql = hqlQuery.findValue(queryId);
         Pattern pattern = Pattern.compile("(:\\w+)");
         Matcher matcher = pattern.matcher(hql);
         ArrayList<String> params = new ArrayList<>();
-        while (matcher.find()){
+        while (matcher.find()) {
             params.add(matcher.group().replace(":", ""));
         }
         TypedQuery<T> query = em.createQuery(hql, this.classe);

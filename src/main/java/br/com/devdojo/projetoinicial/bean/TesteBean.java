@@ -3,6 +3,7 @@ package br.com.devdojo.projetoinicial.bean;
 import br.com.devdojo.projetoinicial.annotations.Transactional;
 import br.com.devdojo.projetoinicial.persistence.daointerfaces.DAO;
 import br.com.devdojo.projetoinicial.persistence.model.Projeto;
+import br.com.devdojo.projetoinicial.utils.FacesUtils;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -38,12 +39,28 @@ public class TesteBean implements Serializable {
 
 //        List<Projeto> projetos = dao.listAll();
 //        System.out.println(projetos);
+//      List<Projeto> projetos2 = dao.findHQLQuery("searchProjectByName", Arrays.asList(like("teste"), 4L), 0);
+
+//        List<Projeto> projetos = dao.findHQLQuery("searchProjectByName", Collections.singletonList("teste"), 0);
+//        FacesUtils.addSuccessMessage("sucesso");
+
+        try {
+            Projeto projeto = new Projeto();
+            Projeto projeto2 = new Projeto();
+            projeto.setNome("Projeto 1");
+            projeto2.setNome("Projeto 2");
+            dao.save(projeto);
+            if(true)
+                throw new Exception("testando transação");
+            dao.save(projeto2);
+            FacesUtils.addSuccessMessage("sucesso");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            FacesUtils.addErrorMessage("erro");
+            throw e;
+        }
 
 
-        List<Projeto> projetos = dao.findHQLQuery("searchProjectByName", Collections.singletonList("teste"), 0);
-        System.out.println(projetos);
-
-        List<Projeto> projetos2 = dao.findHQLQuery("searchProjectByName", Arrays.asList(like("teste"), 4L), 0);
-        System.out.println(projetos2);
     }
 }
